@@ -30,7 +30,8 @@ TQueueItem* TQueueItem::GetNext() {
 
 TQueueItem::~TQueueItem() {
   	std::cout << "Queue item: deleted" << std::endl;
-  	delete next;
+  	if (next != nullptr)
+		delete next;
 }
 
 std::ostream& operator<<(std::ostream& os, const TQueueItem& obj) {
