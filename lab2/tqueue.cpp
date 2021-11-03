@@ -21,6 +21,7 @@ void TQueue::Push(const Trapezoid& trapezoid) {
     /* tail->SetNext(other); */
     tail->next = other;
     tail = other;
+    tail->next = nullptr;
     std::cout << "Added one trapezoid to tail. " << "Coordinates: " << other->trapezoid << ". Area = " << other->trapezoid.Area() << std::endl;
 }
 
@@ -30,8 +31,12 @@ void TQueue::Pop() {
 
     std::cout << "Removed one trapezoid " << head->trapezoid << " from head" << std::endl;
 
+    TQueueItem *temp = head;
+
     head = head->next;
     
+    delete temp;
+
     if (head == NULL)
         tail = NULL;
 }
@@ -69,7 +74,7 @@ std::ostream& operator<<(std::ostream& os, const TQueue& queue) {
 }
 
 void TQueue::Clear() {
-    while (tail != head) {
+    for (int i = 0; i < this->Length(); i++) {
         this->Pop();
     }
     std::cout << "Queue was cleared but still exist" << std::endl;

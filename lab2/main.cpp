@@ -63,14 +63,11 @@ int main(int argc, char** argv) {
 	std::cout << "Top: " << queue.Top();
 	std::cout << std::endl;
 
-	queue.Pop();
+	queue.Clear();
 
 	std::cout << queue;
 	std::cout << std::endl;
 
-queue.Pop();
-queue.Pop();
-queue.Pop();
 	std::cout << queue;
 	std::cout << std::endl;
 	
