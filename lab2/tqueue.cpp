@@ -81,7 +81,9 @@ void TQueue::Clear() {
 }
 
 TQueue::~TQueue() {
-    delete head;
-    delete tail;
+/*     if (head != nullptr)
+        delete head;
+    if (tail != nullptr)
+        delete tail; */
     std::cout << "Queue was deleted" << std::endl;
 }
