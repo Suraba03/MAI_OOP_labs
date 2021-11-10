@@ -19,12 +19,12 @@ int main(int argc, char** argv) {
 		std::cout << "Length: " << queue.Length() << std::endl;
 	}
 
-	for (int i = 0; i < n; i++) {
+	//for (int i = 0; i < n; i++) {
 		queue.Pop();
 		std::cout << queue;
 		std::cout << std::endl;
 		std::cout << "Length: " << queue.Length() << std::endl;
-	}
+	//}
 	
 	return 0;
 }

@@ -41,3 +41,8 @@ std::ostream& operator<<(std::ostream& os, Point& p) {
 	os << "{" << p.x_ << ", " << p.y_ << "}";
 	return os;
 }
+
+std::ostream& operator<<(std::ostream& os, const Point& p) {
+	os << "{" << p.x_ << ", " << p.y_ << "}";
+	return os;
+}

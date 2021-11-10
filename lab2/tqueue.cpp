@@ -1,4 +1,5 @@
 #include "tqueue.h"
+#include <vector>
 
 TQueue::TQueue() : head(nullptr), tail(nullptr) {
     std::cout << "Default queue created" << std::endl;
@@ -13,12 +14,11 @@ TQueue::TQueue(const TQueue& other) {
 void TQueue::Push(const Trapezoid& trapezoid) {
     TQueueItem* other = new TQueueItem(trapezoid);
 
-    if (tail == NULL) {
+    if (tail == nullptr) {
         head = tail = other;
         std::cout << "Added one trapezoid to tail. " << "Coordinates: " << other->trapezoid << ". Area = " << other->trapezoid.Area() << std::endl;
         return;
     }
-    /* tail->SetNext(other); */
     tail->next = other;
     tail = other;
     tail->next = nullptr;
@@ -26,7 +26,7 @@ void TQueue::Push(const Trapezoid& trapezoid) {
 }
 
 void TQueue::Pop() {
-    if (head == NULL)
+    if (head == nullptr)
         return;
 
     std::cout << "Removed one trapezoid " << head->trapezoid << " from head" << std::endl;
@@ -37,8 +37,8 @@ void TQueue::Pop() {
     
     delete temp;
 
-    if (head == NULL)
-        tail = NULL;
+    if (head == nullptr)
+        tail = nullptr;
 }
 
 Trapezoid& TQueue::Top() {
@@ -51,6 +51,8 @@ bool TQueue::Empty() {
 }
 
 size_t TQueue::Length() {
+    if (head == nullptr && tail == nullptr)
+        return 0;
     TQueueItem *temp = head;
     int counter = 0;
     while (temp != tail->GetNext()) {
@@ -62,14 +64,18 @@ size_t TQueue::Length() {
 
 std::ostream& operator<<(std::ostream& os, const TQueue& queue) {
     TQueueItem *temp = queue.head;
-    
+    std::vector<TQueueItem *> v;
+
     os << "Queue: ";
-    os << "<= ";
-    while (temp != /* queue.tail->GetNext() */nullptr) {
-        os << temp->trapezoid.Area() << " ";
-        temp = temp->next;
+    os << "=> ";
+    while (temp != nullptr) {
+        v.push_back(temp);
+        //os << *temp << " ";
+        temp = temp->GetNext();
     }
-    os << "<=";
+    for (int i = v.size() - 1; i >= 0; --i) 
+        os << *v[i] << " ";
+    os << "=>";
     return os;
 }
 
@@ -81,9 +87,5 @@ void TQueue::Clear() {
 }
 
 TQueue::~TQueue() {
-/*     if (head != nullptr)
-        delete head;
-    if (tail != nullptr)
-        delete tail; */
     std::cout << "Queue was deleted" << std::endl;
 }

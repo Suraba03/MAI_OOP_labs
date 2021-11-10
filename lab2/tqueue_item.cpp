@@ -35,7 +35,7 @@ TQueueItem::~TQueueItem() {
 }
 
 std::ostream& operator<<(std::ostream& os, const TQueueItem& obj) {
-  	os << "[" << obj.trapezoid << "]" << std::endl;
+	os << (const_cast<TQueueItem&>(obj)).trapezoid.Area();
   	return os;
 }
 
