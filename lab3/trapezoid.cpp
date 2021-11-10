@@ -2,14 +2,12 @@
 
 #include <cmath>
 
-//static Point a_o, b_o, c_o, d_o;
 
 Trapezoid::Trapezoid()
     : len_ab(0.0),
       len_bc(0.0),
       len_cd(0.0),
       len_da(0.0) {
-/*     std::cout << "Default Trapezoid created" << std::endl; */
 }
 
 Trapezoid::Trapezoid(double ab, double bc, double cd, double da) 
@@ -17,31 +15,19 @@ Trapezoid::Trapezoid(double ab, double bc, double cd, double da)
       len_bc(bc),
       len_cd(cd),
       len_da(da) {
-/*     std::cout << "Trapezoid created" << std::endl;
- */}
+}
 
 
 Trapezoid::Trapezoid(const Trapezoid& other)
     : Trapezoid(other.len_ab, other.len_bc, other.len_cd, other.len_da) {
-/*     std::cout << "Made copy of Trapezoid" << std::endl;
- */}
+}
 
 
 
 std::istream& operator>>(std::istream& is, Trapezoid& obj) {
-    
-    /* std::cout << "Enter points: "; */
-    is >> obj.a_.x_ >> obj.a_.y_; 
-    is >> obj.b_.x_ >> obj.b_.y_;
-    is >> obj.c_.x_ >> obj.c_.y_;
-    is >> obj.d_.x_ >> obj.d_.y_;
+    std::cout << "Enter points: ";
 
-    obj.len_ab = obj.a_.dist(obj.b_);
-    obj.len_bc = obj.b_.dist(obj.c_);
-    obj.len_cd = obj.c_.dist(obj.d_);
-    obj.len_da = obj.d_.dist(obj.a_);
-
-/*     is >> obj.a_;
+    is >> obj.a_;
     is >> obj.b_;
     is >> obj.c_;
     is >> obj.d_;
@@ -49,25 +35,15 @@ std::istream& operator>>(std::istream& is, Trapezoid& obj) {
     obj.len_ab = obj.a_.dist(obj.b_);
     obj.len_bc = obj.b_.dist(obj.c_);
     obj.len_cd = obj.c_.dist(obj.d_);
-    obj.len_da = obj.d_.dist(obj.a_); */
+    obj.len_da = obj.d_.dist(obj.a_);
 
     return is;
 } //
 
 std::ostream& operator<<(std::ostream& os, const Trapezoid& obj) {
-    os << "A = {" << obj.a_.x_ << ", " << obj.a_.y_ << "}, ";
-    os << "B = {" << obj.b_.x_ << ", " << obj.b_.y_ << "}, ";
-    os << "C = {" << obj.c_.x_ << ", " << obj.c_.y_ << "}, ";
-    os << "D = {" << obj.d_.x_ << ", " << obj.d_.y_ << "}";
-
-/*     os << "A = " << obj.a_;
-    os << "B = " << obj.b_;
-    os << "C = " << obj.c_;
-    os << "D = " << obj.d_; */
-
+    os << "A = " << obj.a_ << ", B = " << obj.b_ << ", C = " << obj.c_ << ", D = " << obj.d_;
     return os;
-} // отсутствует оператор "<<", соответствующий этим операндам -- типы операндов: std::basic_ostream<char, std::char_traits<char>> << const PointC/C++(349)
-
+}
 
 
 Trapezoid& Trapezoid::operator=(const Trapezoid& other) {
@@ -105,13 +81,6 @@ bool Trapezoid::operator==(const Trapezoid& other) {
     }
 } //
 
-/* Trapezoid& Trapezoid::operator++() {} //
-
-Trapezoid operator+(const Trapezoid& left, const Trapezoid& right) {} // */
-
-
-
-
 size_t Trapezoid::VertexesNumber() {
     return 4;
 }
@@ -125,14 +94,6 @@ double Trapezoid::Area() {
                      (p - len_da - len_cd)) /
            std::abs(len_bc - len_da);
 }
-
-/* void Trapezoid::Print(std::ostream& os) {
-    std::cout << "Trapezoid: ";
-    os << a_o; std::cout << " ";
-    os << b_o; std::cout << " ";
-    os << c_o; std::cout << " ";
-    os << d_o; std::cout << std::endl;
-} */
 
 Trapezoid::~Trapezoid() {
 

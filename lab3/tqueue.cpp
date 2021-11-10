@@ -1,4 +1,5 @@
 #include "tqueue.h"
+#include <vector>
 
 TQueue::TQueue() : head(nullptr), tail(nullptr) {
     std::cout << "Default queue created" << std::endl;
@@ -47,6 +48,8 @@ bool TQueue::Empty() {
 }
 
 size_t TQueue::Length() {
+    if (head == nullptr && tail == nullptr)
+        return 0;
     std::shared_ptr<TQueueItem> temp = head;
     int counter = 0;
     while (temp != tail->GetNext()) {
@@ -58,14 +61,17 @@ size_t TQueue::Length() {
 
 std::ostream& operator<<(std::ostream& os, const TQueue& queue) {
     std::shared_ptr<TQueueItem> temp = queue.head;
-    
+    std::vector<std::shared_ptr<TQueueItem>> v;
     os << "Queue: ";
-    os << "<= ";
-    while (temp != /* queue.tail->GetNext() */nullptr) {
-        os << temp->trapezoid.Area() << " ";
-        temp = temp->next;
+    os << "=> ";
+    while (temp != nullptr) {
+        v.push_back(temp);
+        //os << *temp << " ";
+        temp = temp->GetNext();
     }
-    os << "<=";
+    for (int i = v.size() - 1; i >= 0; --i) 
+        os << *v[i] << " ";
+    os << "=>";
     return os;
 }
 
