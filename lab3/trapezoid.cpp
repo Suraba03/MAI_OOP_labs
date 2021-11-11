@@ -18,8 +18,8 @@ Trapezoid::Trapezoid(double ab, double bc, double cd, double da)
 }
 
 
-Trapezoid::Trapezoid(const Trapezoid& other)
-    : Trapezoid(other.len_ab, other.len_bc, other.len_cd, other.len_da) {
+Trapezoid::Trapezoid(std::shared_ptr<Trapezoid>& other)
+    : Trapezoid(other->len_ab, other->len_bc, other->len_cd, other->len_da) {
 }
 
 
@@ -41,7 +41,11 @@ std::istream& operator>>(std::istream& is, Trapezoid& obj) {
 } //
 
 std::ostream& operator<<(std::ostream& os, const Trapezoid& obj) {
-    os << "A = " << obj.a_ << ", B = " << obj.b_ << ", C = " << obj.c_ << ", D = " << obj.d_;
+    std::cout << "Trapezoid: ";
+    os << obj.a_; std::cout << " ";
+    os << obj.b_; std::cout << " ";
+    os << obj.c_; std::cout << " ";
+    os << obj.d_; std::cout << std::endl;
     return os;
 }
 

@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+TQueueItem::TQueueItem() : trapezoid(Trapezoid()), next(nullptr) {}
+
 TQueueItem::TQueueItem(const Trapezoid& trapezoid) {
   	this->trapezoid = trapezoid;
   	this->next = nullptr;

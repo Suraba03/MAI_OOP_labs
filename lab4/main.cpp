@@ -24,14 +24,11 @@ int main(int argc, char** argv) {
 		std::cout << "Length: " << queue.Length() << std::endl;
 	}
 
-	queue.Pop();
-	std::cout << queue << std::endl;
-	
-	queue.Pop();
-	std::cout << queue << std::endl;
-	
-	queue.Pop();
-	std::cout << queue << std::endl;
+	TQueue<Trapezoid> queue2 = queue;
+
+	std::cout << "Queue: " << queue << std::endl;
+
+	std::cout << "Queue2: " << queue2 << std::endl;
 	
 	return 0;
 }

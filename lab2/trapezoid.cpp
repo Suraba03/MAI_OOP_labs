@@ -41,7 +41,11 @@ std::istream& operator>>(std::istream& is, Trapezoid& obj) {
 } //
 
 std::ostream& operator<<(std::ostream& os, const Trapezoid& obj) {
-    os << "A = " << obj.a_ << ", B = " << obj.b_ << ", C = " << obj.c_ << ", D = " << obj.d_;
+    std::cout << "Trapezoid: ";
+    os << obj.a_; std::cout << " ";
+    os << obj.b_; std::cout << " ";
+    os << obj.c_; std::cout << " ";
+    os << obj.d_; std::cout << std::endl;
     return os;
 }
 

@@ -3,8 +3,8 @@
 
 #include "figure.h"
 #include <iostream>
-#include <memory>
 #include "point.h"
+#include <memory>
 
 
 class Trapezoid : public Figure {
@@ -15,7 +15,6 @@ public:
 
     friend std::istream& operator>>(std::istream& is, Trapezoid& obj);
     friend std::ostream& operator<<(std::ostream& os, const Trapezoid& obj);
-    
 
     Trapezoid& operator=(const Trapezoid& right);
     bool operator==(const Trapezoid& right);

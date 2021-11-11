@@ -11,36 +11,49 @@ TQueue::TQueue(const TQueue& other) {
     std::cout << "Queue copied" << std::endl;
 }
 
-void TQueue::Push(const Trapezoid& trapezoid) {
+/* TQueue::TQueue(const TQueue& other) {
+    std::shared_ptr<TQueueItem> item = other.head;
+
+    while (item->next != nullptr) {
+        TQueueItem *item1 = new TQueueItem;
+        item1->next = nullptr;
+        tail->trapezoid = item->trapezoid;
+        tail->next = item1;
+        tail = item1;
+        item = item->next;
+    }
+    std::cout << "Queue copied" << std::endl;
+} */
+
+void TQueue::Push(std::shared_ptr<Trapezoid> &&trapezoid) {
     std::shared_ptr<TQueueItem> other(new TQueueItem(trapezoid));
 
     if (tail == nullptr) {
         head = tail = other;
-        std::cout << "Added one trapezoid to tail. " << "Coordinates: " << other->trapezoid << ". Area = " << other->trapezoid.Area() << std::endl;
+        std::cout << "Added one trapezoid to tail. " << "Coordinates: " << *other->trapezoid << ". Area = " << other->trapezoid->Area() << std::endl;
         return;
     }
-    /* tail->SetNext(other); */
-    tail->next = other;
+    tail->SetNext(other);
+    //tail->next = other;
     tail = other;
     tail->next = nullptr;
-    std::cout << "Added one trapezoid to tail. " << "Coordinates: " << other->trapezoid << ". Area = " << other->trapezoid.Area() << std::endl;
+    std::cout << "Added one trapezoid to tail. " << "Coordinates: " << *other->trapezoid << ". Area = " << other->trapezoid->Area() << std::endl;
 }
 
 void TQueue::Pop() {
     if (head == nullptr)
         return;
 
-    std::cout << "Removed one trapezoid " << head->trapezoid << " from head" << std::endl;
+    std::cout << "Removed one trapezoid from head."  << "Coordinates: " << *head->trapezoid << ". Area = " << head->trapezoid->Area() << std::endl;
 
-    head = head->next;
+    head = head->GetNext();
 
     if (head == nullptr)
         tail = nullptr;
 }
 
-Trapezoid& TQueue::Top() {
-    Trapezoid& out = head->trapezoid;
-    return out;
+std::shared_ptr<Trapezoid>& TQueue::Top() {
+    return head->trapezoid;
 }
 
 bool TQueue::Empty() {
@@ -62,6 +75,7 @@ size_t TQueue::Length() {
 std::ostream& operator<<(std::ostream& os, const TQueue& queue) {
     std::shared_ptr<TQueueItem> temp = queue.head;
     std::vector<std::shared_ptr<TQueueItem>> v;
+
     os << "Queue: ";
     os << "=> ";
     while (temp != nullptr) {

@@ -7,7 +7,7 @@ TQueue<T>::TQueue() : head(nullptr), tail(nullptr) {
 }
 
 template <class T>
-TQueue<T>::TQueue(const TQueue<T>& other) {
+TQueue<T>::TQueue(const TQueue& other) {
     head = other.head;
     tail = other.tail;
     std::cout << "Queue copied" << std::endl;
@@ -91,6 +91,16 @@ void TQueue<T>::Clear() {
         this->Pop();
     }
     std::cout << "Queue was cleared but still exist" << std::endl;
+}
+
+template <class T>
+TIterator<TQueueItem<T>, T> TQueue<T>::begin() {
+  return TIterator<TQueueItem<T>, T>(head);
+}
+
+template <class T>
+TIterator<TQueueItem<T>, T> TQueue<T>::end() {
+  return TIterator<TQueueItem<T>, T>(nullptr);
 }
 
 template <class T>

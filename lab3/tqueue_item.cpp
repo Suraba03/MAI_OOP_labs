@@ -1,8 +1,7 @@
 #include "tqueue_item.h"
-
 #include <iostream>
 
-TQueueItem::TQueueItem(const Trapezoid& trapezoid) {
+TQueueItem::TQueueItem(const std::shared_ptr<Trapezoid>& trapezoid) {
   	this->trapezoid = trapezoid;
   	this->next = nullptr;
   	std::cout << "Queue item: created" << std::endl;
@@ -14,15 +13,16 @@ TQueueItem::TQueueItem(const TQueueItem& other) {
   	std::cout << "Queue item: copied" << std::endl;
 }
 
-std::shared_ptr<TQueueItem> TQueueItem::SetNext(std::shared_ptr<TQueueItem> next) {
+std::shared_ptr<TQueueItem> TQueueItem::SetNext(std::shared_ptr<TQueueItem> &next) { /////////////// added &
 	std::shared_ptr<TQueueItem> old = this->next;
 	this->next = next;
 	return old;
 }
 
-Trapezoid TQueueItem::GetTrapezoid() const {
+std::shared_ptr<Trapezoid> TQueueItem::GetTrapezoid() const {
 	return this->trapezoid;
 }
+
 
 std::shared_ptr<TQueueItem> TQueueItem::GetNext() {
 	return this->next;
@@ -33,7 +33,7 @@ TQueueItem::~TQueueItem() {
 }
 
 std::ostream& operator<<(std::ostream& os, const TQueueItem& obj) {
-	os << (const_cast<TQueueItem&>(obj)).trapezoid.Area();
+  	os << obj.trapezoid->Area();
   	return os;
 }
 

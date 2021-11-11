@@ -16,6 +16,7 @@ int main()
                 std::cout << "press t -- Play with Trapezoid\n";
                 std::cout << "press r -- Play with Rhombus\n";
                 std::cout << "press p -- Play with Pentagon\n";
+                std::cout << "press e -- Exit\n";
             }
             else if (c == 't') {
                 std::cout << "Trapezoid Mode...\nUse coodinates. Type of points - double\n";
@@ -50,13 +51,17 @@ int main()
                 c.Print(std::cout);
                 std::cout << "Complete, press next button...\n";  
             }
+            else if (c == 'e') {
+                std::cout << "End session..." << std::endl;
+                return 0;
+            }
             else if (!(c == 't' || c == 'r' || c == 'p' || c == '?') && (c != ' ' && c != '\n' && c != '\t')) {
                 std::cout << "Damn bro... wrong button, try again\n";
             }
         }
     }
     else {
-        std::cout << "Getta fuck up, stupid peace of shit\n";
+        std::cout << "Stop it, get some help(\n";
     }
     return 0;
 }

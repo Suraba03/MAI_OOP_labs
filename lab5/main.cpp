@@ -4,9 +4,13 @@
 
 // Simple queue on pointers
 int main(int argc, char** argv) { 
-	TQueue queue;
-
+	TQueue<Trapezoid> queue;
 	std::shared_ptr<Trapezoid> tr(new Trapezoid(1, 2, 3, 4));
+
+
+	std::cout << queue << std::endl;
+
+	std::shared_ptr<Trapezoid> t;
 
 	std::cout << "Enter n: ";
 	int n; std::cin >> n;
@@ -20,13 +24,15 @@ int main(int argc, char** argv) {
 		std::cout << "Length: " << queue.Length() << std::endl;
 	}
 
-	
-	TQueue queue2 = queue;
+	TQueue<Trapezoid> queue2 = queue;
 
 	std::cout << "Queue: " << queue << std::endl;
 
 	std::cout << "Queue2: " << queue2 << std::endl;
-
+	
+	for (auto i : queue) {
+		std::cout << *i << std::endl;
+	}
 
 	return 0;
 }

@@ -5,6 +5,7 @@
 
 class TQueueItem {
 public:
+  TQueueItem();
   TQueueItem(const Trapezoid& trapezoid);
   TQueueItem(const TQueueItem& other);
   

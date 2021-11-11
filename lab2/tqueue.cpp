@@ -5,10 +5,23 @@ TQueue::TQueue() : head(nullptr), tail(nullptr) {
     std::cout << "Default queue created" << std::endl;
 }
 
+/* TQueue::TQueue(const TQueue& other) {
+    TQueueItem *item = other.head;
+
+    while (item->next != nullptr) {
+        TQueueItem *item1 = new TQueueItem;
+        item1->next = nullptr;
+        tail->trapezoid = item->trapezoid;
+        tail->next = item1;
+        tail = item1;
+        item = item->next;
+    }
+    std::cout << "Queue copied" << std::endl;
+} */
+
 TQueue::TQueue(const TQueue& other) {
     head = other.head;
     tail = other.tail;
-    std::cout << "Queue copied" << std::endl;
 }
 
 void TQueue::Push(const Trapezoid& trapezoid) {
