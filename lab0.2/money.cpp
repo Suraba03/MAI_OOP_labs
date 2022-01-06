@@ -123,8 +123,8 @@ std::ostream& operator<<(std::ostream& os, const Money& m)
     return os;
 }
 
-long double operator""_toCop(long double cop) {
-    return (cop / 100);
+long double operator""_tokop(long double kop){
+    return (kop / 100);
 }
 
 Money::~Money() {}
