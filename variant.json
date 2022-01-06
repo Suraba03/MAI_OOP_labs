@@ -6,19 +6,20 @@
       "Pentagon"
     ],
     "containers": [
-      "TQueue"
+      "TQueue",
+      "TLinkedList"
     ],
     "reports": [
       "lab1"
     ],
     "finished_labs": {
-      "lab0.1": "___in_progress__",
-      "lab0.2": "___in_progress__",
+      "lab0.1:4": "lab0.1",
+      "lab0.2:4": "___in_progress__",
       "lab1:5": "lab1",
       "lab2:5": "lab2",
-      "lab3:5": "lab3",
+      "lab3:4": "lab3",
       "lab4:5": "lab4",
       "lab5:5": "lab5",
-      "lab6": "___in_progress__"
+      "lab6:4": "___in_progress__"
     }
   }
